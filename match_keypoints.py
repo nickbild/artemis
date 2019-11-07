@@ -3,6 +3,9 @@ import numpy as np
 import pickle
 
 
+max_distance = 1000000      # Max distance measurement for a match to be considered valid.
+
+
 def unpickle_keypoints(array):
     keypoints = []
     descriptors = []
@@ -17,13 +20,14 @@ def unpickle_keypoints(array):
 # Load previously determined KPs.
 keypoints_database = pickle.load(open("keypoints_database.dat", "rb"))
 kp1, desc1 = unpickle_keypoints(keypoints_database[0])
+kp1, desc1 = unpickle_keypoints(keypoints_database[1])
 
 surf = cv2.xfeatures2d.SURF_create()
 cap = cv2.VideoCapture(0)
 
 while True:
     # Load image to find KP in.
-    #frame = cv2.imread("file_4.jpg")
+    # frame = cv2.imread("file_2.jpg")
     ret, frame = cap.read()
 
     # Detect keypoints.
@@ -33,16 +37,14 @@ while True:
     # Search for a keypoint matching the target.
     bf = cv2.BFMatcher(cv2.NORM_L1, crossCheck=False)
     matches = bf.match(desc1, desc2)
-    matches = sorted(matches, key = lambda x:x.distance)
 
     if len(matches) > 0:
-        if matches[0].distance < 0.5:
+        matches = sorted(matches, key = lambda x:x.distance)
+        if matches[0].distance < max_distance:
             kp2_idx = matches[0].trainIdx
             (x, y) = kp2[kp2_idx].pt
 
-            print(matches[0].distance)
-
-            print("Found at x:{} y:{}".format(x, y))
+            print("Found at x:{} y:{} score:{}".format(x, y, matches[0].distance))
 
             # img_orig = cv2.imread("file_2.jpg")
             # img = cv2.drawMatches(img_orig, kp1, frame, kp2, matches[:10], flags=2, outImg=np.array([]))
