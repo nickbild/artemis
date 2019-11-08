@@ -1,3 +1,4 @@
+import cv2
 import torch
 from skimage import io
 from skimage import transform
@@ -17,11 +18,8 @@ def init_model():
     return ssd_model, utils, classes_to_labels
 
 def locate_object(frame, obj_of_interest, ssd_model, utils, classes_to_labels):
-    uris = [
-        'http://images.cocodataset.org/val2017/000000397133.jpg'
-        #'http://images.cocodataset.org/val2017/000000037777.jpg',
-        #'http://images.cocodataset.org/val2017/000000252219.jpg'
-    ]
+    cv2.imwrite("current.jpg", frame)
+    uris = ["current.jpg"]
 
     inputs = [utils.prepare_input(uri) for uri in uris]
     tensor = utils.prepare_tensor(inputs, precision == 'fp16')
@@ -35,9 +33,10 @@ def locate_object(frame, obj_of_interest, ssd_model, utils, classes_to_labels):
     for image_idx in range(len(best_results_per_input)):
         bboxes, classes, confidences = best_results_per_input[image_idx]
         for idx in range(len(bboxes)):
-            left, bot, right, top = bboxes[idx]
-            x, y, w, h = [val * 300 for val in [left, bot, right - left, top - bot]]
-            print("x:{} y:{} w:{} h:{} label:{} conf:{}".format(x, y, w, h, classes_to_labels[classes[idx] - 1], confidences[idx]*100))
+            if classes_to_labels[classes[idx] - 1] == obj_of_interest:
+                left, bot, right, top = bboxes[idx]
+                x, y, w, h = [val * 300 for val in [left, bot, right - left, top - bot]]
+                #print("x:{} y:{} w:{} h:{} label:{} conf:{}".format(x, y, w, h, classes_to_labels[classes[idx] - 1], confidences[idx]*100))
+                return x, y, w, h
 
-    return 1, 2
-
+    return None, None, None, None

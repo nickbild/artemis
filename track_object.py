@@ -5,12 +5,16 @@ import infer
 import servo
 
 
-max_distance = 1000000      # Max distance measurement for a keypoint match to be considered valid.
-obj_of_interest = 1         # Object to locate.
+max_distance = 1000000              # Max distance measurement for a keypoint match to be considered valid.
+obj_of_interest = "person"          # Object to locate.  COCO class label.
 
 surf = cv2.xfeatures2d.SURF_create()
 bf = cv2.BFMatcher(cv2.NORM_L1, crossCheck=False)
+
 cap = cv2.VideoCapture(0)
+cap.set(3, 300)
+cap.set(4, 300)
+
 
 def unpickle_keypoints(array):
     keypoints = []
@@ -35,7 +39,7 @@ while True:
     ret, frame = cap.read()
 
     # Locate the object of interest in the current frame.
-    obj_x, obj_y = infer.locate_object(frame, obj_of_interest, ssd_model, utils, classes_to_labels)
+    obj_x, obj_y, obj_w, obj_h = infer.locate_object(frame, obj_of_interest, ssd_model, utils, classes_to_labels)
 
     # If the object was found...
     if obj_x is not None:
@@ -57,4 +61,3 @@ while True:
                 print("Laser at x:{} y:{} score:{}".format(x, y, matches[0].distance))
                 # Move laser point closer to object via servo motion.
                 servo.move_laser(obj_x, obj_y, x, y)
-
