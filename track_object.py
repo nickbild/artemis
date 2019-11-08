@@ -8,6 +8,9 @@ import servo
 max_distance = 1000000      # Max distance measurement for a keypoint match to be considered valid.
 obj_of_interest = 1         # Object to locate.
 
+surf = cv2.xfeatures2d.SURF_create()
+bf = cv2.BFMatcher(cv2.NORM_L1, crossCheck=False)
+cap = cv2.VideoCapture(0)
 
 def unpickle_keypoints(array):
     keypoints = []
@@ -24,10 +27,6 @@ def unpickle_keypoints(array):
 keypoints_database = pickle.load(open("keypoints_database.dat", "rb"))
 kp1, desc1 = unpickle_keypoints(keypoints_database[0])
 kp1, desc1 = unpickle_keypoints(keypoints_database[1])
-
-surf = cv2.xfeatures2d.SURF_create()
-bf = cv2.BFMatcher(cv2.NORM_L1, crossCheck=False)
-cap = cv2.VideoCapture(0)
 
 while True:
     ret, frame = cap.read()
@@ -53,4 +52,5 @@ while True:
 
                 print("Object at x:{} y:{}".format(obj_x, obj_y))
                 print("Laser at x:{} y:{} score:{}".format(x, y, matches[0].distance))
+                # Move laser point closer to object via servo motion.
                 servo.move_laser(obj_x, obj_y, x, y)
