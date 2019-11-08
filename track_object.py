@@ -28,11 +28,14 @@ keypoints_database = pickle.load(open("keypoints_database.dat", "rb"))
 kp1, desc1 = unpickle_keypoints(keypoints_database[0])
 kp1, desc1 = unpickle_keypoints(keypoints_database[1])
 
+# Initialize DL model.
+ssd_model, utils, classes_to_labels = infer.init_model()
+
 while True:
     ret, frame = cap.read()
 
     # Locate the object of interest in the current frame.
-    obj_x, obj_y = infer.locate_object(frame, obj_of_interest)
+    obj_x, obj_y = infer.locate_object(frame, obj_of_interest, ssd_model, utils, classes_to_labels)
 
     # If the object was found...
     if obj_x is not None:
@@ -54,3 +57,4 @@ while True:
                 print("Laser at x:{} y:{} score:{}".format(x, y, matches[0].distance))
                 # Move laser point closer to object via servo motion.
                 servo.move_laser(obj_x, obj_y, x, y)
+
