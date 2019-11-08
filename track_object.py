@@ -5,7 +5,7 @@ import infer
 import servo
 
 
-max_distance = 0.5                  # Max distance measurement for a keypoint match to be considered valid.
+max_distance = 1000000              # Max distance measurement for a keypoint match to be considered valid.
 obj_of_interest = "person"          # Object to locate.  COCO class label.
 
 surf = cv2.xfeatures2d.SURF_create()
