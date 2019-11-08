@@ -27,8 +27,11 @@ def locate_object(frame, obj_of_interest, ssd_model, utils, classes_to_labels):
     with torch.no_grad():
         detections_batch = ssd_model(tensor)
 
-    results_per_input = utils.decode_results(detections_batch)
-    best_results_per_input = [utils.pick_best(results, 0.70) for results in results_per_input]
+    try:
+        results_per_input = utils.decode_results(detections_batch)
+        best_results_per_input = [utils.pick_best(results, 0.20) for results in results_per_input]
+    except:
+        return None, None, None, None
 
     for image_idx in range(len(best_results_per_input)):
         bboxes, classes, confidences = best_results_per_input[image_idx]
