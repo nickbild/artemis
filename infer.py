@@ -17,6 +17,7 @@ def init_model():
 
     return ssd_model, utils, classes_to_labels
 
+
 def locate_object(frame, obj_of_interest, ssd_model, utils, classes_to_labels):
     cv2.imwrite("current.jpg", frame)
     uris = ["current.jpg"]
@@ -39,7 +40,6 @@ def locate_object(frame, obj_of_interest, ssd_model, utils, classes_to_labels):
             if classes_to_labels[classes[idx] - 1] == obj_of_interest:
                 left, bot, right, top = bboxes[idx]
                 x, y, w, h = [val * 300 for val in [left, bot, right - left, top - bot]]
-                #print("x:{} y:{} w:{} h:{} label:{} conf:{}".format(x, y, w, h, classes_to_labels[classes[idx] - 1], confidences[idx]*100))
                 return x, y, w, h
 
     return None, None, None, None

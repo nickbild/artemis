@@ -3,8 +3,8 @@ import cv2
 import numpy
 
 
-cam_width = 352
-cam_height = 288
+cam_width = 300
+cam_height = 300
 hue_min = 20
 hue_max = 160
 sat_min = 100
