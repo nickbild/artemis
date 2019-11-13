@@ -1,11 +1,17 @@
+window = 15
+
 
 def move_laser(obj_x, obj_y, x, y):
-    if x < obj_x:
+    if (x + window) < obj_x:
         print("Move servo right.")
-    elif x > obj_x:
+    elif (x - window) > obj_x:
         print("Move servo left.")
+    else:
+        print("x OK")
 
-    if y < obj_y:
+    if (y + window) < obj_y:
         print("Move servo down.")
-    elif y > obj_y:
+    elif (y - window) > obj_y:
         print("Move servo up.")
+    else:
+        print("Y OK")

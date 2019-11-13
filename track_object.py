@@ -39,8 +39,8 @@ while True:
             obj_x_center = int(obj_x + (obj_w / 2))
             obj_y_center = int(obj_y + (obj_h / 2))
 
-            print("Object center at x:{} y:{}".format(obj_x_center, obj_y_center))
-            print("Laser at x:{} y:{}".format(laser_x, laser_y))
+            #print("Object center at x:{} y:{}".format(obj_x_center, obj_y_center))
+            #print("Laser at x:{} y:{}".format(laser_x, laser_y))
 
             # Move laser point closer to object via servo motion.
             servo.move_laser(obj_x_center, obj_y_center, laser_x, laser_y)
