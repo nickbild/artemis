@@ -1,32 +1,56 @@
 import RPi.GPIO as GPIO
+from time import sleep
 
 
 window = 15
 
+dir1 = 25 # Pin 22.
+dir2 = 8 # Pin 24.
+servo_select = 24 # Pin 18.
 
-def init():
-    output_pin = 24 # Pin 18.
-    GPIO.setmode(GPIO.BCM)
-    GPIO.setup(output_pin, GPIO.OUT, initial=GPIO.HIGH)
-    pwm = GPIO.PWM(output_pin, 50)
-    pwm.start(7.5) # Center.  Range 5-10.
-
-    return pwm
+GPIO.setmode(GPIO.BCM)
+GPIO.setup(dir1, GPIO.OUT, initial=GPIO.LOW)
+GPIO.setup(dir2, GPIO.OUT, initial=GPIO.LOW)
+GPIO.setup(servo_select, GPIO.OUT, initial=GPIO.LOW)
 
 
 def move_laser(obj_x, obj_y, x, y, pwm):
     if (x + window) < obj_x:
-        print("Move servo right.")
-        pwm.ChangeDutyCycle(6)
+        # Right.
+        GPIO.output(servo_select, GPIO.LOW)
+
+        GPIO.output(dir1, GPIO.LOW)
+        sleep(0.01)
+        GPIO.output(dir1, GPIO.HIGH)
+        sleep(0.01)
+        GPIO.output(dir1, GPIO.LOW)
+
     elif (x - window) > obj_x:
-        print("Move servo left.")
-        pwm.ChangeDutyCycle(8)
-    else:
-        print("x OK")
+        # Left
+        GPIO.output(servo_select, GPIO.LOW)
+
+        GPIO.output(dir2, GPIO.LOW)
+        sleep(0.01)
+        GPIO.output(dir2, GPIO.HIGH)
+        sleep(0.01)
+        GPIO.output(dir2, GPIO.LOW)
 
     if (y + window) < obj_y:
-        print("Move servo down.")
+        # Down.
+        GPIO.output(servo_select, GPIO.HIGH)
+
+        GPIO.output(dir1, GPIO.LOW)
+        sleep(0.01)
+        GPIO.output(dir1, GPIO.HIGH)
+        sleep(0.01)
+        GPIO.output(dir1, GPIO.LOW)
+
     elif (y - window) > obj_y:
-        print("Move servo up.")
-    else:
-        print("Y OK")
+        # Up.
+        GPIO.output(servo_select, GPIO.HIGH)
+
+        GPIO.output(dir2, GPIO.LOW)
+        sleep(0.01)
+        GPIO.output(dir2, GPIO.HIGH)
+        sleep(0.01)
+        GPIO.output(dir2, GPIO.LOW)

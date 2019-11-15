@@ -1,5 +1,5 @@
 import RPi.GPIO as GPIO
-import time
+
 
 output_pin = 23 # Pin 16
 GPIO.setmode(GPIO.BCM)
@@ -11,4 +11,3 @@ def on():
 
 def off():
     GPIO.output(output_pin, GPIO.LOW)
-
