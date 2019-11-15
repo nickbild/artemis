@@ -16,6 +16,8 @@ cap.set(4, 720)
 # Initialize DL model.
 ssd_model, utils, classes_to_labels = infer.init_model()
 
+p = servo.init()
+
 while True:
     ret, frame = cap.read()
     frame = cv2.resize(frame, (300, 300))
@@ -43,7 +45,7 @@ while True:
             #print("Laser at x:{} y:{}".format(laser_x, laser_y))
 
             # Move laser point closer to object via servo motion.
-            servo.move_laser(obj_x_center, obj_y_center, laser_x, laser_y)
+            servo.move_laser(obj_x_center, obj_y_center, laser_x, laser_y, p)
     else:
         # Turn laser off.
         if laser_on:
