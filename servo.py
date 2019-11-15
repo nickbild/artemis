@@ -5,22 +5,22 @@ window = 15
 
 
 def init():
-    output_pin = 27 # Pin 13.
+    output_pin = 24 # Pin 18.
     GPIO.setmode(GPIO.BCM)
     GPIO.setup(output_pin, GPIO.OUT, initial=GPIO.HIGH)
-    p = GPIO.PWM(output_pin, 50)
-    p.start(7.5) # Center.  Range 5-10.
+    pwm = GPIO.PWM(output_pin, 50)
+    pwm.start(7.5) # Center.  Range 5-10.
 
-    return p
+    return pwm
 
 
-def move_laser(obj_x, obj_y, x, y, p):
+def move_laser(obj_x, obj_y, x, y, pwm):
     if (x + window) < obj_x:
         print("Move servo right.")
-        p.ChangeDutyCycle(6)
+        pwm.ChangeDutyCycle(6)
     elif (x - window) > obj_x:
         print("Move servo left.")
-        p.ChangeDutyCycle(8)
+        pwm.ChangeDutyCycle(8)
     else:
         print("x OK")
 
