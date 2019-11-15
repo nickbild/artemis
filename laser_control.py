@@ -1,6 +1,14 @@
+import RPi.GPIO as GPIO
+import time
+
+output_pin = 23 # Pin 16
+GPIO.setmode(GPIO.BCM)
+GPIO.setup(output_pin, GPIO.OUT, initial=GPIO.LOW)
+
 
 def on():
-    print("Turn laser on.")
+    GPIO.output(output_pin, GPIO.HIGH)
 
 def off():
-    print("Turn laser off.")
+    GPIO.output(output_pin, GPIO.LOW)
+
