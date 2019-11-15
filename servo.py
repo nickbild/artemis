@@ -14,7 +14,7 @@ GPIO.setup(dir2, GPIO.OUT, initial=GPIO.LOW)
 GPIO.setup(servo_select, GPIO.OUT, initial=GPIO.LOW)
 
 
-def move_laser(obj_x, obj_y, x, y, pwm):
+def move_laser(obj_x, obj_y, x, y):
     if (x + window) < obj_x:
         # Right.
         GPIO.output(servo_select, GPIO.LOW)
