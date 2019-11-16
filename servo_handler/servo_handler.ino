@@ -32,18 +32,18 @@ void loop() {
   
   if (digitalRead(in1) == HIGH && in1_active) {
     if (digitalRead(select_servo) == LOW) {
-      pos1 += 2;
+      pos1 += 1;
     } else {
-      pos2 += 2;
+      pos2 += 1;
     }
     
     in1_active = 0;
   }
   if (digitalRead(in2) == HIGH && in2_active) {
     if (digitalRead(select_servo) == LOW) {
-      pos1 -= 2;
+      pos1 -= 1;
     } else {
-      pos2 -= 2;
+      pos2 -= 1;
     }
     
     in2_active = 0;
