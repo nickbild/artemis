@@ -19,21 +19,21 @@ def move_laser(obj_x, obj_y, x, y):
         # Right.
         GPIO.output(servo_select, GPIO.LOW)
 
-        GPIO.output(dir1, GPIO.LOW)
-        sleep(0.01)
-        GPIO.output(dir1, GPIO.HIGH)
-        sleep(0.01)
-        GPIO.output(dir1, GPIO.LOW)
-
-    elif (x - window) > obj_x:
-        # Left
-        GPIO.output(servo_select, GPIO.LOW)
-
         GPIO.output(dir2, GPIO.LOW)
         sleep(0.01)
         GPIO.output(dir2, GPIO.HIGH)
         sleep(0.01)
         GPIO.output(dir2, GPIO.LOW)
+
+    elif (x - window) > obj_x:
+        # Left
+        GPIO.output(servo_select, GPIO.LOW)
+
+        GPIO.output(dir1, GPIO.LOW)
+        sleep(0.01)
+        GPIO.output(dir1, GPIO.HIGH)
+        sleep(0.01)
+        GPIO.output(dir1, GPIO.LOW)
 
     if (y + window) < obj_y:
         # Down.
