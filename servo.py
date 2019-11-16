@@ -2,7 +2,7 @@ import RPi.GPIO as GPIO
 from time import sleep
 
 
-window = 15
+window = 20
 
 dir1 = 25 # Pin 22.
 dir2 = 8 # Pin 24.

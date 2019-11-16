@@ -56,7 +56,6 @@ while True:
             laser_control.on()
 
         laser_coords = laser_tracker.detect(frame)
-        print(laser_coords)
 
         if laser_coords is not None:
             laser_x = laser_coords[0]

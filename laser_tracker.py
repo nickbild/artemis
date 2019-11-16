@@ -5,11 +5,11 @@ import numpy
 
 cam_width = 300
 cam_height = 300
-hue_min = 20
-hue_max = 160
-sat_min = 100
-sat_max = 255
-val_min = 200
+hue_min = 210
+hue_max = 255
+sat_min = 0
+sat_max = 63
+val_min = 225
 val_max = 255
 
 channels = {
