@@ -6,7 +6,7 @@ Artemis is an eyeglass-mounted device that can be configured to locate a specifi
 
 An eyeglass-mounted camera streams images to a Jetson AGX Xavier.  An SSD300 model is used for object localization within these images.  When the object of interest has been found, a laser diode is turned on.
 
-A servo is also mounted on the eyeglasses for X-axis control of the laser.  A second servo is mounted on top of the first to give Y-axis control.  The laser is mounted on the second servo.
+A servo is also mounted on the eyeglasses for X-axis control of the laser.  A second servo is mounted on top of the first, at a 90 degree angle, to give Y-axis control.  The laser is mounted on the second servo.
 
 The image is thresholded in OpenCV to determine the location of the laser pointer.  With the location of the object, and also the laser, now determined it is possible to adjust the servos to place the laser over the object of interest.
 
