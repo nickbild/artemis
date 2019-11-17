@@ -12,7 +12,7 @@ Images are thresholded in OpenCV to determine the location of the laser pointer.
 
 ### SSD300 Model
 
-To save time for the prototyping phase, a model pre-trained with the COCO dataset was used ([PyTorch Hub](https://pytorch.org/hub/nvidia_deeplearningexamples_ssd/)).  It is able to recognize and localize [80 different object types](https://github.com/nickbild/artemis/blob/master/category_names.txt).
+To save time in the prototyping phase, a model pre-trained with the COCO dataset was used ([PyTorch Hub](https://pytorch.org/hub/nvidia_deeplearningexamples_ssd/)).  It is able to recognize and localize [80 different object types](https://github.com/nickbild/artemis/blob/master/category_names.txt).
 
 Any arbitrary model that provides object localization could be inserted in place of this model, and could be trained to detect anything of interest.
 
