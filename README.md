@@ -54,6 +54,12 @@ Switch to the `artemis` directory, then run:
 
 `python3 track_object.py`
 
+## Diagrams
+
+!(Fritzing Diagram)[https://raw.githubusercontent.com/nickbild/artemis/master/diagrams/artemis_bb.jpg]
+
+The Fritzing file can be [downloaded here](https://github.com/nickbild/artemis/raw/master/diagrams/artemis.fzz).
+
 ## Bill of Materials
 
 - NVIDIA Jetson AGX Xavier
