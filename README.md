@@ -56,7 +56,7 @@ Switch to the `artemis` directory, then run:
 
 ## Diagrams
 
-![Fritzing Diagram](https://raw.githubusercontent.com/nickbild/artemis/master/diagrams/artemis_bb.jpg)
+![Fritzing Diagram](https://raw.githubusercontent.com/nickbild/artemis/master/diagrams/artemis_bb.png)
 
 The Fritzing file can be [downloaded here](https://github.com/nickbild/artemis/raw/master/diagrams/artemis.fzz).
 
