@@ -22,7 +22,7 @@ An Adafruit Itsy Bitsy M4 Express was used to simplify control of the servos.  T
 
 ## Media
 
-See it in action.  In this video, Artemis has been directed to find a pair of scissors:
+See it in action.  In this video, Artemis has been directed to find a pair of scissors:  
 [YouTube](https://www.youtube.com/watch?v=zOmJOMlqhAQ)
 
 The processing:
