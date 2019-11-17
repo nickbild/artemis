@@ -25,8 +25,14 @@ An Adafruit Itsy Bitsy M4 Express was used to simplify control of the servos.  T
 See it in action.  In this video, Artemis has been directed to find a pair of scissors:
 [YouTube](https://www.youtube.com/watch?v=zOmJOMlqhAQ)
 
+The processing:
+![core](https://raw.githubusercontent.com/nickbild/artemis/master/img/core_sm.jpg)
+
+The device:
+![core](https://raw.githubusercontent.com/nickbild/artemis/master/img/camera_sm.jpg)
+
 The glasses:
-![glasses](***TODO***)
+![glasses](https://raw.githubusercontent.com/nickbild/artemis/master/img/glasses_sm.jpg)
 
 ## Software
 
