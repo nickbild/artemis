@@ -18,7 +18,7 @@ Any arbitrary model that provides object localization could be inserted in place
 
 ### Servo Control
 
-An Adafruit Itsy Bitsy M4 Express was used to simplify control of the servos.  The [Arduino sketch is available here](https://github.com/nickbild/artemis/blob/master/servo_handler/servo_handler.ino).
+An Adafruit Itsy Bitsy M4 Express microcontroller dev board was used to simplify control of the servos.  The [Arduino sketch is available here](https://github.com/nickbild/artemis/blob/master/servo_handler/servo_handler.ino).
 
 ## Media
 
