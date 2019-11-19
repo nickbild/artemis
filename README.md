@@ -2,6 +2,10 @@
 
 Artemis is an eyeglass-mounted device that can be configured to locate a specific type of object, or a person.  When the target is found, Artemis will track it with a laser.
 
+![core](https://raw.githubusercontent.com/nickbild/artemis/master/img/video.gif)
+
+Higher resolution video in [Media](https://github.com/nickbild/artemis#media) section below.
+
 ## How It Works
 
 An eyeglass-mounted camera streams images to a Jetson AGX Xavier.  An SSD300 model is used for object localization within these images.  When the object of interest has been found, a laser diode is turned on.
