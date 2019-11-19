@@ -2,7 +2,9 @@
 
 Artemis is an eyeglass-mounted device that can be configured to locate a specific type of object, or a person.  When the target is found, Artemis will track it with a laser.
 
-![core](https://raw.githubusercontent.com/nickbild/artemis/master/img/video.gif)
+<p align="center">
+<img src="https://raw.githubusercontent.com/nickbild/artemis/master/img/video.gif">
+</p>
 
 Higher resolution video in [Media](https://github.com/nickbild/artemis#media) section below.
 
